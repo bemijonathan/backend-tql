@@ -1,7 +1,7 @@
 import routes from './routes'
 import { StatusCode } from './utils'
 import rateLimit from 'express-rate-limit'
-import * as express from 'express'
+import express, { Request, Response } from 'express'
 
 export class App {
     public app = express()
@@ -37,7 +37,7 @@ export class App {
     }
 
     private initializeRoutes() {
-        this.app.get('/', (req, res) => {
+        this.app.get('/', (req: Request, res: Response) => {
             return res.status(StatusCode.OK).json({
                 data: {
                     'hello': "👋"
@@ -46,7 +46,7 @@ export class App {
         });
         this.app.use(routes);
 
-        this.app.all('*', (req, res) => {
+        this.app.all('*', (req: Request, res: Response) => {
             return res.status(StatusCode.NOT_FOUND).json({
                 status: false,
                 error: 'route not found',

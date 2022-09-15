@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --watch",
     "dev": "nodemon --exec ts-node index",
-    "start": "node build/index.js",
+    "start": "node index.js",
     "build": "tsc",
     "postinstall": "npm run build"
   },
