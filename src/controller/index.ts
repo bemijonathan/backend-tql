@@ -1,11 +1,11 @@
-import { Request, Response, NextFunction } from 'express'
+import { Request, Response } from 'express'
 import { StatusCode } from '../utils';
-import services from '../services';
+import { Service } from '../services';
 
 class Controller {
-    private service: typeof services
+    private service: Service
     constructor() {
-        this.service = services
+        this.service = new Service()
     }
     getHowOld = (req: Request, res: Response) => {
         const path = req.url
@@ -15,9 +15,10 @@ class Controller {
                 status: response.success,
                 message: response.message,
                 path,
-                data: response.data || {}
+                data: response.data || undefined
             })
         } catch (error) {
+            console.log(error)
             return res.status(StatusCode.INTERNAL_SERVER_ERROR).json({
                 status: false,
                 message: 'An Error Occurred 😱😱😱😱',

@@ -14,7 +14,7 @@ export class App {
 
     public startServer() {
         this.app.listen(this.port, () => {
-            console.log(`App listening on port ${this.port} ${process.env.NODE_ENV}`);
+            console.log(`App listening on port ${this.port} ${process.env.NODE_ENV || 'development'}`);
         });
     }
 
@@ -29,7 +29,7 @@ export class App {
     }
 
     private initializeRoutes() {
-        this.app.use('/api/v1/', routes);
+        this.app.use(routes);
 
         this.app.all('*', (req, res) => {
             return res.status(StatusCode.NOT_FOUND).json({
