@@ -10,9 +10,10 @@ interface ServiceResponse {
 export class Service {
     getHowOld = (date: string): ServiceResponse => {
 
-        const getDate = new Date(date)
-        const today = new Date()
+        const formatDate = parseInt(date)
 
+        const getDate = new Date(isNaN(formatDate) ? date : formatDate)
+        const today = new Date()
         const timestamp = getDate.getTime()
 
         if (isNaN(timestamp)) {
@@ -25,10 +26,12 @@ export class Service {
 
         const diff = (new Date(today.getTime() - getDate.getTime())).getFullYear() - 1970
 
+        console.log(diff)
+
         return {
             success: true,
             status: StatusCode.OK,
-            data: diff
+            data: { age: diff }
         }
     }
 }

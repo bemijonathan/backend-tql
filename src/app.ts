@@ -1,16 +1,23 @@
-import express from 'express'
 import routes from './routes'
 import { StatusCode } from './utils'
+import rateLimit from 'express-rate-limit'
+import * as express from 'express'
 
 export class App {
-    public app: express.Application
+    public app = express()
     port = process.env.PORT || 3000
     constructor() {
-        this.app = express()
         this.initializeMiddleware()
         this.initializeRoutes()
-        this.startServer()
     }
+
+    private limiter = rateLimit({
+        windowMs: 1000, // 1 second in milliseconds
+        max: 3,
+        message: 'You have exceeded the 3 requests in 1 second limit!',
+        standardHeaders: true,
+        legacyHeaders: false,
+    })
 
     public startServer() {
         this.app.listen(this.port, () => {
@@ -23,12 +30,20 @@ export class App {
     }
 
     private initializeMiddleware() {
+        this.app.use(this.limiter)
         this.app.set('trust proxy', true);
         this.app.use(express.urlencoded({ extended: true }));
         this.app.use(express.json());
     }
 
     private initializeRoutes() {
+        this.app.get('/', (req, res) => {
+            return res.status(StatusCode.OK).json({
+                data: {
+                    'hello': "👋"
+                }
+            });
+        });
         this.app.use(routes);
 
         this.app.all('*', (req, res) => {
