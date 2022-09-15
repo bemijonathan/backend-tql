@@ -1,10 +1,9 @@
+import { Router } from "express";
+import controller from "../controller";
+import routeValidators from "../validations";
 
-import { Router } from 'express';
-import controller from '../controller';
-import routeValidators from '../validations'
+const route = Router();
 
-const route = Router()
+route.get("/howold", routeValidators.howOld, controller.getHowOld);
 
-route.get('/howold', routeValidators.howOld, controller.getHowOld)
-
-export default route
+export default route;

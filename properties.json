@@ -1,8 +1,8 @@
 {
-    "name": "Jonathan Atiene",
-    "track": "backend",
-    "email": "bemijonathan@gmail.com",
-    "githubUsername": "bemijonthan",
-    "deployedAppURL": "https://talent-ql-ts-node.herokuapp.com/howold",
-    "explainer": "https://vimeo.com/749926491/4e3d9af4e1"
+  "name": "Jonathan Atiene",
+  "track": "backend",
+  "email": "bemijonathan@gmail.com",
+  "githubUsername": "bemijonthan",
+  "deployedAppURL": "https://talent-ql-ts-node.herokuapp.com/howold",
+  "explainer": "https://vimeo.com/749926491/4e3d9af4e1"
 }
