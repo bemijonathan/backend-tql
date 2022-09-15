@@ -3,6 +3,6 @@
     "track": "backend",
     "email": "bemijonathan@gmail.com",
     "githubUsername": "bemijonthan",
-    "deployedAppURL": "",
+    "deployedAppURL": "https://talent-ql-ts-node.herokuapp.com/howold",
     "explainer": ""
 }

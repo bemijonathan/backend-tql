@@ -5,7 +5,10 @@
   "main": "index.ts",
   "scripts": {
     "test": "jest --watch",
-    "dev": "nodemon --exec ts-node index"
+    "dev": "nodemon --exec ts-node index",
+    "start": "node build/index.js",
+    "build": "tsc",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
