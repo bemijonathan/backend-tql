@@ -26,8 +26,6 @@ export class Service {
 
         const diff = (new Date(today.getTime() - getDate.getTime())).getFullYear() - 1970
 
-        console.log(diff)
-
         return {
             success: true,
             status: StatusCode.OK,
